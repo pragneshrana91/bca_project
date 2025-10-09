@@ -17,7 +17,8 @@ Infrastructure is defined as code, making environments reproducible, auditable, 
 Automates provisioning and configuration, drastically reducing human errors and deployment time.
 Facilitates collaboration through version-controlled infrastructure definitions.
 Enables scaling and rapid environment spin-up/spin-down based on demand.
-------
+
+
 # Added AWS Access key ID and Secret access key to autheticate terraform to AWS.
 # The aws_instance resource supports lifecycle management: creation, modification, and deletion of EC2 instances via Terraform commands (terraform apply, terraform destroy).
 The very first step for initializing a Terraform project is to run the command:
