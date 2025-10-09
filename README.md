@@ -1,4 +1,4 @@
-# bca_project
+<img width="81" height="25" alt="image" src="https://github.com/user-attachments/assets/8f382fa3-0c9f-4fd0-b745-be8b70fb78df" /># bca_project
 DevOps project for BCA last sam
 
 --- **Terraform** ---
@@ -17,3 +17,9 @@ Infrastructure is defined as code, making environments reproducible, auditable, 
 Automates provisioning and configuration, drastically reducing human errors and deployment time.
 Facilitates collaboration through version-controlled infrastructure definitions.
 Enables scaling and rapid environment spin-up/spin-down based on demand.
+------
+# Added AWS Access key ID and Secret access key to autheticate terraform to AWS.
+# The aws_instance resource supports lifecycle management: creation, modification, and deletion of EC2 instances via Terraform commands (terraform apply, terraform destroy).
+The very first step for initializing a Terraform project is to run the command:
+1. terraform init - This command should be executed in the directory containing your Terraform configuration files (typically .tf files). It initializes the working directory, downloads the necessary provider plugins, configures the backend for storing state, and prepares modules needed for subsequent Terraform operations.
+2. terraform plan - The terraform plan command is used to create an execution plan that previews the changes Terraform will make to your infrastructure based on your current configuration files.
