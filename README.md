@@ -26,3 +26,14 @@ The very first step for initializing a Terraform project is to run the command:
 3. terraform apply - The terraform apply command is used to execute the changes defined in your Terraform configuration files and make your cloud infrastructure match the desired state.
 4. terraform destroy - The terraform destroy command is used to remove all infrastructure resources that have been provisioned and are currently managed by your Terraform configuration.
 
+#Created bca_project_main.tf under the Terraform directory. This configuration automates the provisioning of AWS resources with a single command, eliminating the need for manual, interactive steps. By using Infrastructure as Code (IaC), this approach ensures consistency, repeatability, and reduces human errors in resource creation.
+
+The Terraform code manages key AWS components including EC2 instances, security groups, and key pairs, all defined declaratively.
+
+Sensitive data such as AWS access keys are handled securely via AWS CLI configuration rather than hard-coded in files.
+
+Changes to the infrastructure can be tracked, versioned, and reviewed via source control to improve collaboration.
+
+Terraform manages lifecycle states of resources to enable efficient updates, scaling, and teardown.
+
+This method accelerates deployment workflows and enhances operational efficiency in cloud infrastructure management.
