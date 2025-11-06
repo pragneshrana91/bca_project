@@ -65,18 +65,26 @@ resource "aws_instance" "bca_ec2" {
     yum update -y
     sudo dnf install java-17-amazon-corretto -y
     sudo dnf install java-11-amazon-corretto -y
+    sudo dnf install git -y
     java -version
     sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
     sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
     sudo dnf install jenkins -y
     sudo systemctl enable jenkins
     sudo systemctl start jenkins
+
   EOF
 
   provisioner "remote-exec" {
     inline = [
       "while ! sudo test -f /var/lib/jenkins/secrets/initialAdminPassword; do echo 'Waiting for Jenkins setup...'; sleep 50; done",
-      "sudo cat /var/lib/jenkins/secrets/initialAdminPassword"
+      "sudo cat /var/lib/jenkins/secrets/initialAdminPassword",
+      "cd /opt",
+      "sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz",
+      "sudo tar -xvzf apache-maven-3.9.11-bin.tar.gz",
+      "sudo mv apache-maven-3.9.11 maven",
+      "cd /opt/maven/bin/",
+      "sudo ./mvn -v"
     ]
 
     connection {
