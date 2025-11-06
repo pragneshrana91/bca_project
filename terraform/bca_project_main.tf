@@ -85,21 +85,12 @@ resource "aws_instance" "bca_ec2" {
       "sudo mv apache-maven-3.9.11 maven",
       "cd /opt/maven/bin/",
       "sudo ./mvn -v",
-      #"sudo su",
-      #"cd ~/",
       "echo 'M2_HOME=/opt/maven' | sudo tee -a /root/.bash_profile",
       "echo 'M2=/opt/maven/bin' | sudo tee -a /root/.bash_profile",
       "echo 'JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64' | sudo tee -a /root/.bash_profile",
       "echo 'PATH=$PATH:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2' | sudo tee -a /root/.bash_profile",
       "sudo source /root/.bash_profile",
       "sudo cat /root/.bash_profile",
-      #"echo $PATH"
-      #"echo 'cd /opt/maven/bin/' | sudo tee -a /root/.bash_profile",
-      #"vi .bash_profile"
-      #M2_HOME=/opt/maven/
-      #M2=/opt/maven/bin/
-      #JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64
-      #PATH=$PATH:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2
       "sudo cat /var/lib/jenkins/secrets/initialAdminPassword"
     ]
 
