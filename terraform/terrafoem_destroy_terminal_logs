@@ -1,12 +1,12 @@
 PS C:\Users\newaco\Desktop\Amity_Uni\Sem_6\Project\bca_project\bca_project\terraform> terraform destroy
-tls_private_key.rsa_4096: Refreshing state... [id=8dcaabbc33229e764f6045871faa60debe3caec0]
-local_file.private_key: Refreshing state... [id=65af8b87e388020c2fded1206b58bf7e44c691ef]
+tls_private_key.rsa_4096: Refreshing state... [id=a313ce20470dbb6cf1c552f988bef63f30d4c7e4]
+local_file.private_key: Refreshing state... [id=8a834ff41a68d5041402788db055980c890725ec]
 aws_key_pair.demo_pair: Refreshing state... [id=bca_project_DevOps]
-aws_security_group.bca_sg: Refreshing state... [id=sg-0c30bec3be12b9f14]
-aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Refreshing state... [id=sgr-0fc36f2d9caee24ac]
-aws_vpc_security_group_ingress_rule.allow_ssh: Refreshing state... [id=sgr-0c6d6b71ec4abad0c]
-aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Refreshing state... [id=sgr-041ebf2b35ed45f76]
-aws_instance.bca_ec2: Refreshing state... [id=i-01c275a75869c7418]
+aws_security_group.bca_sg: Refreshing state... [id=sg-0588413b25a5d6e33]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Refreshing state... [id=sgr-0ebd33175fc647693]
+aws_vpc_security_group_ingress_rule.allow_ssh: Refreshing state... [id=sgr-0ab0c13fd9201daab]
+aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Refreshing state... [id=sgr-05c58d94815edbad1]
+aws_instance.bca_ec2: Refreshing state... [id=i-003403a5bbc888a36]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following 
 symbols:
@@ -17,16 +17,16 @@ Terraform will perform the following actions:
   # aws_instance.bca_ec2 will be destroyed
   - resource "aws_instance" "bca_ec2" {
       - ami                                  = "ami-0e6be795b21969e1d" -> null
-      - arn                                  = "arn:aws:ec2:us-west-1:707515007775:instance/i-01c275a75869c7418" -> null
+      - arn                                  = "arn:aws:ec2:us-west-1:707515007775:instance/i-003403a5bbc888a36" -> null
       - associate_public_ip_address          = true -> null
-      - availability_zone                    = "us-west-1a" -> null
+      - availability_zone                    = "us-west-1c" -> null
       - disable_api_stop                     = false -> null
       - disable_api_termination              = false -> null
       - ebs_optimized                        = false -> null
       - force_destroy                        = false -> null
       - get_password_data                    = false -> null
       - hibernation                          = false -> null
-      - id                                   = "i-01c275a75869c7418" -> null
+      - id                                   = "i-003403a5bbc888a36" -> null
       - instance_initiated_shutdown_behavior = "stop" -> null
       - instance_state                       = "running" -> null
       - instance_type                        = "t2.micro" -> null
@@ -35,18 +35,18 @@ Terraform will perform the following actions:
       - key_name                             = "bca_project_DevOps" -> null
       - monitoring                           = false -> null
       - placement_partition_number           = 0 -> null
-      - primary_network_interface_id         = "eni-0ae8f0e7fdb72a1cb" -> null
-      - private_dns                          = "ip-172-31-29-50.us-west-1.compute.internal" -> null
-      - private_ip                           = "172.31.29.50" -> null
-      - public_dns                           = "ec2-54-183-167-145.us-west-1.compute.amazonaws.com" -> null
-      - public_ip                            = "54.183.167.145" -> null
+      - primary_network_interface_id         = "eni-085512b49be4d49ab" -> null
+      - private_dns                          = "ip-172-31-1-238.us-west-1.compute.internal" -> null
+      - private_ip                           = "172.31.1.238" -> null
+      - public_dns                           = "ec2-52-53-162-134.us-west-1.compute.amazonaws.com" -> null
+      - public_ip                            = "52.53.162.134" -> null
       - region                               = "us-west-1" -> null
       - secondary_private_ips                = [] -> null
       - security_groups                      = [
           - "bca_project_DevOps_sg",
         ] -> null
       - source_dest_check                    = true -> null
-      - subnet_id                            = "subnet-069f3d05496d2c44d" -> null
+      - subnet_id                            = "subnet-078cb507837172fa3" -> null
       - tags                                 = {
           - "Name" = "ec2_project"
         } -> null
@@ -59,6 +59,7 @@ Terraform will perform the following actions:
             yum update -y
             sudo dnf install java-17-amazon-corretto -y
             sudo dnf install java-11-amazon-corretto -y
+            sudo dnf install git -y
             java -version
             sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
             sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
@@ -68,7 +69,7 @@ Terraform will perform the following actions:
         EOT -> null
       - user_data_replace_on_change          = false -> null
       - vpc_security_group_ids               = [
-          - "sg-0c30bec3be12b9f14",
+          - "sg-0588413b25a5d6e33",
         ] -> null
         # (8 unchanged attributes hidden)
 
@@ -104,7 +105,7 @@ Terraform will perform the following actions:
 
       - primary_network_interface {
           - delete_on_termination = true -> null
-          - network_interface_id  = "eni-0ae8f0e7fdb72a1cb" -> null
+          - network_interface_id  = "eni-085512b49be4d49ab" -> null
         }
 
       - private_dns_name_options {
@@ -121,7 +122,7 @@ Terraform will perform the following actions:
           - tags                  = {} -> null
           - tags_all              = {} -> null
           - throughput            = 125 -> null
-          - volume_id             = "vol-01f59c469f99a8062" -> null
+          - volume_id             = "vol-011a2a31b5620bd5b" -> null
           - volume_size           = 8 -> null
           - volume_type           = "gp3" -> null
             # (1 unchanged attribute hidden)
@@ -131,12 +132,12 @@ Terraform will perform the following actions:
   # aws_key_pair.demo_pair will be destroyed
   - resource "aws_key_pair" "demo_pair" {
       - arn             = "arn:aws:ec2:us-west-1:707515007775:key-pair/bca_project_DevOps" -> null
-      - fingerprint     = "2e:77:9b:6b:5c:2f:34:70:e5:0c:40:2f:a8:2f:e2:26" -> null
+      - fingerprint     = "86:d7:ea:c1:49:ed:5b:41:bf:cf:31:b6:6f:19:d5:3a" -> null
       - id              = "bca_project_DevOps" -> null
       - key_name        = "bca_project_DevOps" -> null
-      - key_pair_id     = "key-0c71abe850d0fd97f" -> null
+      - key_pair_id     = "key-09a779e2b6d1447e1" -> null
       - key_type        = "rsa" -> null
-      - public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDwmvjw8qrtNBziME6PoTS09OyK1ebUWs9njdYs7FT0aoaBzt7VrasJijlRtbvdmCOTWsxAWuly+Pn3NwBWKpXF7vL3B71Eg0yfBsewjFXDTsA/+uCllgttdxBprdM/mU+6s22JHMehnx67pyFfHlKmq0LdylGpuUAedR6UccSzous1k66lX9meUqbY/r/ZZ2cAdZYdM1jJPQh4go3m7UJwgr6sQbLEg+YKk2fb6UAOtzLDFux1Dv08dOijeRtYN7ZYKMh5ldJiusuE16rMVs697TuYOyY33y2V3UZLTTrnU6KO3rpHxFs1+UKPnZazyXXkfRcJhw219jK8BtlNIJ5hrQJ7hlQM+GvJvUFVeBhjKSc9iN6ozhYPRO1aOw01O06pJmx6remyrJz3Yk5L2FE7MSO92GMoiw0c3pcr4/ZBGtXnsbVcot2r7ROeyOvgnxloO8225m1NQkvuAl7fUhPh+gPh54r2wnmKI1zHLrDm1Tbf3DMgPEuFctmML2wf0ZuBN6VQwEzL+tW7c1ehKNHYV7Bt5azabVJ27ECqxhfO5L0W/6cIrdqsm9EszCMbclOgPjGNk3tZd47iGoFxVkaj+NpSYaGZCDGjJv8nucgaqq/NB9lQLErMNvXbRlFUWudxQCg1f7Tk3QZP7EQCr5KlO6/06uQ/FgaTHRabkwNLsQ==" -> null
+      - public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDMirZH7jVIdE9CSRPWG/oqdK8b9ENoX0wT2/vKq3w7voXHWQ4XcqJBYrpB6uj6qkWHMcUGm67apQPKfW9xu+JAD6f0x1ljVwYSJ9PVvSjgg2lM1wDXWJ9VWRJkIYuPa2aAj5yB6YVUh0ZiYeVwiKnnh+yrCwAidrt/dv/oFOatbXrx6bT/kpzqDw6FqNe9GvDOWHHQVQ1OflxQ/v3t6HMIAEivCBZDkInbyzOr88lDaFJeeCCqjoJ3jHIAxl7TiuEsxfpq5JWYHLftflj+0UTkd8mXCPCDWXE/zlbXceuVGA7rpJ6DWI0mDUDEmzgaD1mrf5B94X1/Uj4r8azQuLi3rzGuweMArnU6atymNY/bfsoqF4FsbmNIY7pvajMXUbcNHiWwWq+pI8U0F0okhatary3IhaQXRQDvqsSUig2PqFLQ5qHhmq5F2WzILIzUV+baY5BAfgcxjDeQt7alM2Eu02uPwfPygMOTgbKB7XdkFoUbRf8CdA76smT5VFrAqeqIa0CR0qkpEN37Vb5ZxCvf+51o52R1U/W7k2Ppmj5WlruKH/sUwSx50ERXEfH/Civup5lYUd/nO+6o9QpVw+JpH0o9YtHcJQSqfID0v1C6fr4JcRywK1uPin/Cb7KRhVHZpjjcgNcV//EcqZ33GfpcbLxhL+5CScfFL/aFRfqaSQ==" -> null
       - region          = "us-west-1" -> null
       - tags            = {} -> null
       - tags_all        = {} -> null
@@ -145,7 +146,7 @@ Terraform will perform the following actions:
 
   # aws_security_group.bca_sg will be destroyed
   - resource "aws_security_group" "bca_sg" {
-      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group/sg-0c30bec3be12b9f14" -> null
+      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group/sg-0588413b25a5d6e33" -> null
       - description            = "Managed from terraform" -> null
       - egress                 = [
           - {
@@ -162,7 +163,7 @@ Terraform will perform the following actions:
                 # (1 unchanged attribute hidden)
             },
         ] -> null
-      - id                     = "sg-0c30bec3be12b9f14" -> null
+      - id                     = "sg-0588413b25a5d6e33" -> null
       - ingress                = [
           - {
               - cidr_blocks      = [
@@ -203,40 +204,40 @@ Terraform will perform the following actions:
 
   # aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 will be destroyed
   - resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
-      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group-rule/sgr-0fc36f2d9caee24ac" -> null
+      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group-rule/sgr-0ebd33175fc647693" -> null
       - cidr_ipv4              = "0.0.0.0/0" -> null
-      - id                     = "sgr-0fc36f2d9caee24ac" -> null
+      - id                     = "sgr-0ebd33175fc647693" -> null
       - ip_protocol            = "-1" -> null
       - region                 = "us-west-1" -> null
-      - security_group_id      = "sg-0c30bec3be12b9f14" -> null
-      - security_group_rule_id = "sgr-0fc36f2d9caee24ac" -> null
+      - security_group_id      = "sg-0588413b25a5d6e33" -> null
+      - security_group_rule_id = "sgr-0ebd33175fc647693" -> null
       - tags_all               = {} -> null
     }
 
   # aws_vpc_security_group_ingress_rule.allow_ssh will be destroyed
   - resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
-      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group-rule/sgr-0c6d6b71ec4abad0c" -> null
+      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group-rule/sgr-0ab0c13fd9201daab" -> null
       - cidr_ipv4              = "0.0.0.0/0" -> null
       - from_port              = 22 -> null
-      - id                     = "sgr-0c6d6b71ec4abad0c" -> null
+      - id                     = "sgr-0ab0c13fd9201daab" -> null
       - ip_protocol            = "tcp" -> null
       - region                 = "us-west-1" -> null
-      - security_group_id      = "sg-0c30bec3be12b9f14" -> null
-      - security_group_rule_id = "sgr-0c6d6b71ec4abad0c" -> null
+      - security_group_id      = "sg-0588413b25a5d6e33" -> null
+      - security_group_rule_id = "sgr-0ab0c13fd9201daab" -> null
       - tags_all               = {} -> null
       - to_port                = 22 -> null
     }
 
   # aws_vpc_security_group_ingress_rule.allow_tls_ipv4 will be destroyed
   - resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
-      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group-rule/sgr-041ebf2b35ed45f76" -> null
+      - arn                    = "arn:aws:ec2:us-west-1:707515007775:security-group-rule/sgr-05c58d94815edbad1" -> null
       - cidr_ipv4              = "0.0.0.0/0" -> null
       - from_port              = 8080 -> null
-      - id                     = "sgr-041ebf2b35ed45f76" -> null
+      - id                     = "sgr-05c58d94815edbad1" -> null
       - ip_protocol            = "tcp" -> null
       - region                 = "us-west-1" -> null
-      - security_group_id      = "sg-0c30bec3be12b9f14" -> null
-      - security_group_rule_id = "sgr-041ebf2b35ed45f76" -> null
+      - security_group_id      = "sg-0588413b25a5d6e33" -> null
+      - security_group_rule_id = "sgr-05c58d94815edbad1" -> null
       - tags_all               = {} -> null
       - to_port                = 8080 -> null
     }
@@ -244,45 +245,45 @@ Terraform will perform the following actions:
   # local_file.private_key will be destroyed
   - resource "local_file" "private_key" {
       - content              = (sensitive value) -> null
-      - content_base64sha256 = "H9TGpb4hOq620Fe/Xyp4Gnj8c7VxJMTaKTCUGs8Z4ms=" -> null
-      - content_base64sha512 = "Ryl9/TLBrT1OQH8XXbzoPPC3xTK79qEqiXPn2W7vwI+KtV9HpIZnPv4WHUovWlJVxoi5y07SfENkeLPdi7KwWw==" -> null 
-      - content_md5          = "4db24d379bafea4bcec21c67141ca3e6" -> null
-      - content_sha1         = "65af8b87e388020c2fded1206b58bf7e44c691ef" -> null
-      - content_sha256       = "1fd4c6a5be213aaeb6d057bf5f2a781a78fc73b57124c4da2930941acf19e26b" -> null
-      - content_sha512       = "47297dfd32c1ad3d4e407f175dbce83cf0b7c532bbf6a12a8973e7d96eefc08f8ab55f47a486673efe161d4a2f5a5255c688b9cb4ed27c436478b3dd8bb2b05b" -> null
+      - content_base64sha256 = "saFvejI0JKYHDehQA9yzE576DnirI01sr80tF8Zdiew=" -> null
+      - content_base64sha512 = "BRyEyMJLtmJAvG4ej3PNFKiCIf87hYRqamR/OgjlS65+bHnkqIA4ty8x3v1GfU3J33RRrLqLz2XG1kmEh3A+qA==" -> null 
+      - content_md5          = "b25a41c92d175faa78c75ea37cf86196" -> null
+      - content_sha1         = "8a834ff41a68d5041402788db055980c890725ec" -> null
+      - content_sha256       = "b1a16f7a323424a6070de85003dcb3139efa0e78ab234d6cafcd2d17c65d89ec" -> null
+      - content_sha512       = "051c84c8c24bb66240bc6e1e8f73cd14a88221ff3b85846a6a647f3a08e54bae7e6c79e4a88038b72f31defd467d4dc9df7451acba8bcf65c6d6498487703ea8" -> null
       - directory_permission = "0777" -> null
       - file_permission      = "0777" -> null
       - filename             = "bca_project_DevOps" -> null
-      - id                   = "65af8b87e388020c2fded1206b58bf7e44c691ef" -> null
+      - id                   = "8a834ff41a68d5041402788db055980c890725ec" -> null
     }
 
   # tls_private_key.rsa_4096 will be destroyed
   - resource "tls_private_key" "rsa_4096" {
       - algorithm                     = "RSA" -> null
       - ecdsa_curve                   = "P224" -> null
-      - id                            = "8dcaabbc33229e764f6045871faa60debe3caec0" -> null
+      - id                            = "a313ce20470dbb6cf1c552f988bef63f30d4c7e4" -> null
       - private_key_openssh           = (sensitive value) -> null
       - private_key_pem               = (sensitive value) -> null
       - private_key_pem_pkcs8         = (sensitive value) -> null
-      - public_key_fingerprint_md5    = "0f:0f:ee:57:4b:c7:f6:3f:37:ff:a7:9a:a6:36:dd:0a" -> null
-      - public_key_fingerprint_sha256 = "SHA256:oEmUI1sA49Eg/b+moLJJTNZZZx1pMACutQ5WZcmtvlc" -> null
+      - public_key_fingerprint_md5    = "17:f7:f8:38:6d:61:6e:e7:4f:0a:37:26:3a:f8:c6:f4" -> null
+      - public_key_fingerprint_sha256 = "SHA256:43fAIsarpNSeQ19jeuDSZDdD5bO2wS3ZckaNLz/FvcE" -> null
       - public_key_openssh            = <<-EOT
-            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDwmvjw8qrtNBziME6PoTS09OyK1ebUWs9njdYs7FT0aoaBzt7VrasJijlRtbvdmCOTWsxAWuly+Pn3NwBWKpXF7vL3B71Eg0yfBsewjFXDTsA/+uCllgttdxBprdM/mU+6s22JHMehnx67pyFfHlKmq0LdylGpuUAedR6UccSzous1k66lX9meUqbY/r/ZZ2cAdZYdM1jJPQh4go3m7UJwgr6sQbLEg+YKk2fb6UAOtzLDFux1Dv08dOijeRtYN7ZYKMh5ldJiusuE16rMVs697TuYOyY33y2V3UZLTTrnU6KO3rpHxFs1+UKPnZazyXXkfRcJhw219jK8BtlNIJ5hrQJ7hlQM+GvJvUFVeBhjKSc9iN6ozhYPRO1aOw01O06pJmx6remyrJz3Yk5L2FE7MSO92GMoiw0c3pcr4/ZBGtXnsbVcot2r7ROeyOvgnxloO8225m1NQkvuAl7fUhPh+gPh54r2wnmKI1zHLrDm1Tbf3DMgPEuFctmML2wf0ZuBN6VQwEzL+tW7c1ehKNHYV7Bt5azabVJ27ECqxhfO5L0W/6cIrdqsm9EszCMbclOgPjGNk3tZd47iGoFxVkaj+NpSYaGZCDGjJv8nucgaqq/NB9lQLErMNvXbRlFUWudxQCg1f7Tk3QZP7EQCr5KlO6/06uQ/FgaTHRabkwNLsQ==
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDMirZH7jVIdE9CSRPWG/oqdK8b9ENoX0wT2/vKq3w7voXHWQ4XcqJBYrpB6uj6qkWHMcUGm67apQPKfW9xu+JAD6f0x1ljVwYSJ9PVvSjgg2lM1wDXWJ9VWRJkIYuPa2aAj5yB6YVUh0ZiYeVwiKnnh+yrCwAidrt/dv/oFOatbXrx6bT/kpzqDw6FqNe9GvDOWHHQVQ1OflxQ/v3t6HMIAEivCBZDkInbyzOr88lDaFJeeCCqjoJ3jHIAxl7TiuEsxfpq5JWYHLftflj+0UTkd8mXCPCDWXE/zlbXceuVGA7rpJ6DWI0mDUDEmzgaD1mrf5B94X1/Uj4r8azQuLi3rzGuweMArnU6atymNY/bfsoqF4FsbmNIY7pvajMXUbcNHiWwWq+pI8U0F0okhatary3IhaQXRQDvqsSUig2PqFLQ5qHhmq5F2WzILIzUV+baY5BAfgcxjDeQt7alM2Eu02uPwfPygMOTgbKB7XdkFoUbRf8CdA76smT5VFrAqeqIa0CR0qkpEN37Vb5ZxCvf+51o52R1U/W7k2Ppmj5WlruKH/sUwSx50ERXEfH/Civup5lYUd/nO+6o9QpVw+JpH0o9YtHcJQSqfID0v1C6fr4JcRywK1uPin/Cb7KRhVHZpjjcgNcV//EcqZ33GfpcbLxhL+5CScfFL/aFRfqaSQ==
         EOT -> null
       - public_key_pem                = <<-EOT
             -----BEGIN PUBLIC KEY-----
-            MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA8Jr48PKq7TQc4jBOj6E0
-            tPTsitXm1FrPZ43WLOxU9GqGgc7e1a2rCYo5UbW73Zgjk1rMQFrpcvj59zcAViqV
-            xe7y9we9RINMnwbHsIxVw07AP/rgpZYLbXcQaa3TP5lPurNtiRzHoZ8eu6chXx5S
-            pqtC3cpRqblAHnUelHHEs6LrNZOupV/ZnlKm2P6/2WdnAHWWHTNYyT0IeIKN5u1C
-            cIK+rEGyxIPmCpNn2+lADrcywxbsdQ79PHToo3kbWDe2WCjIeZXSYrrLhNeqzFbO
-            ve07mDsmN98tld1GS00651Oijt66R8RbNflCj52Ws8l15H0XCYcNtfYyvAbZTSCe
-            Ya0Ce4ZUDPhryb1BVXgYYyknPYjeqM4WD0TtWjsNNTtOqSZseq3psqyc92JOS9hR
-            OzEjvdhjKIsNHN6XK+P2QRrV57G1XKLdq+0Tnsjr4J8ZaDvNtuZtTUJL7gJe31IT
-            4foD4eeK9sJ5iiNcxy6w5tU239wzIDxLhXLZjC9sH9GbgTelUMBMy/rVu3NXoSjR
-            2FewbeWs2m1SduxAqsYXzuS9Fv+nCK3arJvRLMwjG3JToD4xjZN7WXeO4hqBcVZG
-            o/jaUmGhmQgxoyb/J7nIGqqvzQfZUCxKzDb120ZRVFrncUAoNX+05N0GT+xEAq+S
-            pTuv9OrkPxYGkx0Wm5MDS7ECAwEAAQ==
+            MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAzIq2R+41SHRPQkkT1hv6
+            KnSvG/RDaF9ME9v7yqt8O76Fx1kOF3KiQWK6Qero+qpFhzHFBpuu2qUDyn1vcbvi
+            QA+n9MdZY1cGEifT1b0o4INpTNcA11ifVVkSZCGLj2tmgI+cgemFVIdGYmHlcIip
+            54fsqwsAIna7f3b/6BTmrW168em0/5Kc6g8OhajXvRrwzlhx0FUNTn5cUP797ehz
+            CABIrwgWQ5CJ28szq/PJQ2hSXnggqo6Cd4xyAMZe04rhLMX6auSVmBy37X5Y/tFE
+            5HfJlwjwg1lxP85W13HrlRgO66Seg1iNJg1AxJs4Gg9Zq3+QfeF9f1I+K/Gs0Li4
+            t68xrsHjAK51OmrcpjWP237KKheBbG5jSGO6b2ozF1G3DR4lsFqvqSPFNBdKJIWr
+            Wq8tyIWkF0UA76rElIoNj6hS0Oah4ZquRdlsyCyM1Ffm2mOQQH4HMYw3kLe2pTNh
+            LtNrj8Hz8oDDk4Gyge13ZBaFG0X/AnQO+rJk+VRawKnqiGtAkdKpKRDd+1W+WcQr
+            3/udaOdkdVP1u5Nj6Zo+Vpa7ih/7FMEsedBEVxHx/wor7qeZWFHf5zvuqPUKVcPi
+            aR9KPWLR3CUEqnyA9L9Qun6+CXEcsCtbj4p/wm+ykYVR2aY43IDXFf/xHKmd9xn6
+            XGy8YS/uQknHxS/2hUX6mkkCAwEAAQ==
             -----END PUBLIC KEY-----
         EOT -> null
       - rsa_bits                      = 4096 -> null
@@ -291,7 +292,7 @@ Terraform will perform the following actions:
 Plan: 0 to add, 0 to change, 8 to destroy.
 
 Changes to Outputs:
-  - bca_ec2 = "54.183.167.145" -> null
+  - jenkins_server_url = "http://52.53.162.134:8080" -> null
 
 Do you really want to destroy all resources?
   Terraform will destroy all your managed infrastructure, as shown above.
@@ -299,22 +300,24 @@ Do you really want to destroy all resources?
 
   Enter a value: yes
 
-local_file.private_key: Destroying... [id=65af8b87e388020c2fded1206b58bf7e44c691ef]
+local_file.private_key: Destroying... [id=8a834ff41a68d5041402788db055980c890725ec]
 local_file.private_key: Destruction complete after 0s
-aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Destroying... [id=sgr-041ebf2b35ed45f76]
-aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Destroying... [id=sgr-0fc36f2d9caee24ac]
+aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Destroying... [id=sgr-05c58d94815edbad1]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Destroying... [id=sgr-0ebd33175fc647693]
+aws_vpc_security_group_ingress_rule.allow_ssh: Destroying... [id=sgr-0ab0c13fd9201daab]
+aws_instance.bca_ec2: Destroying... [id=i-003403a5bbc888a36]
+aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Destruction complete after 1s
 aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Destruction complete after 1s
 aws_vpc_security_group_ingress_rule.allow_ssh: Destruction complete after 1s
-aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Destruction complete after 1s
-aws_instance.bca_ec2: Still destroying... [id=i-01c275a75869c7418, 10s elapsed]
-aws_instance.bca_ec2: Still destroying... [id=i-01c275a75869c7418, 20s elapsed]
-aws_instance.bca_ec2: Still destroying... [id=i-01c275a75869c7418, 30s elapsed]
-aws_instance.bca_ec2: Destruction complete after 32s
+aws_instance.bca_ec2: Still destroying... [id=i-003403a5bbc888a36, 10s elapsed]
+aws_instance.bca_ec2: Still destroying... [id=i-003403a5bbc888a36, 20s elapsed]
+aws_instance.bca_ec2: Still destroying... [id=i-003403a5bbc888a36, 30s elapsed]
+aws_instance.bca_ec2: Destruction complete after 31s
 aws_key_pair.demo_pair: Destroying... [id=bca_project_DevOps]
-aws_security_group.bca_sg: Destroying... [id=sg-0c30bec3be12b9f14]
-aws_key_pair.demo_pair: Destruction complete after 0s
-tls_private_key.rsa_4096: Destroying... [id=8dcaabbc33229e764f6045871faa60debe3caec0]
+aws_security_group.bca_sg: Destroying... [id=sg-0588413b25a5d6e33]
+aws_key_pair.demo_pair: Destruction complete after 1s
+tls_private_key.rsa_4096: Destroying... [id=a313ce20470dbb6cf1c552f988bef63f30d4c7e4]
 tls_private_key.rsa_4096: Destruction complete after 0s
-aws_security_group.bca_sg: Destruction complete after 1s
+aws_security_group.bca_sg: Destruction complete after 2s
 
 Destroy complete! Resources: 8 destroyed.
