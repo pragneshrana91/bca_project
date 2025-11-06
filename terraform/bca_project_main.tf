@@ -107,6 +107,6 @@ resource "aws_instance" "bca_ec2" {
   }
 }
 
-output "bca_ec2_url" {
+output "jenkins_server_url" {
   value = "http://${aws_instance.bca_ec2.public_ip}:8080"
 }
