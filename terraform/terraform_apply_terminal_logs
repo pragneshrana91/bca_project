@@ -174,7 +174,7 @@ Terraform will perform the following actions:
 Plan: 8 to add, 0 to change, 0 to destroy.
 
 Changes to Outputs:
-  + bca_ec2 = (known after apply)
+  + jenkins_server_url = (known after apply)
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
@@ -183,26 +183,26 @@ Do you want to perform these actions?
   Enter a value: yes
 
 tls_private_key.rsa_4096: Creating...
-tls_private_key.rsa_4096: Creation complete after 1s [id=37cb2104313828243d9b6c51ecf33af828cc10ad]
-local_file.private_key: Creating...
-local_file.private_key: Creation complete after 0s [id=09b67390261a2157822de7008b105e2895611488]
-aws_key_pair.demo_pair: Creating...
 aws_security_group.bca_sg: Creating...
-aws_key_pair.demo_pair: Creation complete after 2s [id=bca_project_DevOps]
-aws_security_group.bca_sg: Creation complete after 5s [id=sg-0e19f488b81ea5c80]
+tls_private_key.rsa_4096: Creation complete after 3s [id=a313ce20470dbb6cf1c552f988bef63f30d4c7e4]
+aws_key_pair.demo_pair: Creating...
+local_file.private_key: Creating...
+local_file.private_key: Creation complete after 0s [id=8a834ff41a68d5041402788db055980c890725ec]
+aws_key_pair.demo_pair: Creation complete after 1s [id=bca_project_DevOps]
+aws_security_group.bca_sg: Creation complete after 5s [id=sg-0588413b25a5d6e33]
 aws_instance.bca_ec2: Creating...
-aws_vpc_security_group_ingress_rule.allow_ssh: Creating...
 aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creating...
+aws_vpc_security_group_ingress_rule.allow_ssh: Creating...
 aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Creating...
-aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 0s [id=sgr-0a68b5b5884bc0f88]
-aws_vpc_security_group_ingress_rule.allow_ssh: Creation complete after 1s [id=sgr-0b15aaf08badcf31a]
-aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Creation complete after 1s [id=sgr-0042b2747d6781309]
+aws_vpc_security_group_ingress_rule.allow_tls_ipv4: Creation complete after 0s [id=sgr-05c58d94815edbad1]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 0s [id=sgr-0ebd33175fc647693]
+aws_vpc_security_group_ingress_rule.allow_ssh: Creation complete after 0s [id=sgr-0ab0c13fd9201daab]
 aws_instance.bca_ec2: Still creating... [10s elapsed]
 aws_instance.bca_ec2: Still creating... [20s elapsed]
 aws_instance.bca_ec2: Still creating... [30s elapsed]
 aws_instance.bca_ec2: Provisioning with 'remote-exec'...
 aws_instance.bca_ec2 (remote-exec): Connecting to remote host via SSH...
-aws_instance.bca_ec2 (remote-exec):   Host: 54.241.138.232
+aws_instance.bca_ec2 (remote-exec):   Host: 52.53.162.134
 aws_instance.bca_ec2 (remote-exec):   User: ec2-user
 aws_instance.bca_ec2 (remote-exec):   Password: false
 aws_instance.bca_ec2 (remote-exec):   Private key: true
@@ -224,8 +224,8 @@ aws_instance.bca_ec2: Still creating... [1m50s elapsed]
 aws_instance.bca_ec2: Still creating... [2m0s elapsed]
 aws_instance.bca_ec2: Still creating... [2m10s elapsed]
 aws_instance.bca_ec2: Still creating... [2m20s elapsed]
-aws_instance.bca_ec2 (remote-exec): 81dff9c08ab249c2b959f2469cc54ddc
-aws_instance.bca_ec2 (remote-exec): --2025-11-06 08:22:51--  https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz
+aws_instance.bca_ec2 (remote-exec): e0ca0b0bedab417bb47298c41bd86881
+aws_instance.bca_ec2 (remote-exec): --2025-11-06 10:10:02--  https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz
 aws_instance.bca_ec2 (remote-exec): Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644
 aws_instance.bca_ec2 (remote-exec): Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connected.
 aws_instance.bca_ec2 (remote-exec): HTTP request sent, awaiting response... 200 OK
@@ -233,9 +233,9 @@ aws_instance.bca_ec2 (remote-exec): Length: 9160848 (8.7M) [application/x-gzip]
 aws_instance.bca_ec2 (remote-exec): Saving to: ‘apache-maven-3.9.11-bin.tar.gz’
 
 aws_instance.bca_ec2 (remote-exec):       apache   0%       0  --.-KB/s
-aws_instance.bca_ec2 (remote-exec): apache-maven 100%   8.74M  --.-KB/s    in 0.06s
+aws_instance.bca_ec2 (remote-exec): apache-maven 100%   8.74M  --.-KB/s    in 0.09s
 
-aws_instance.bca_ec2 (remote-exec): 2025-11-06 08:22:51 (138 MB/s) - ‘apache-maven-3.9.11-bin.tar.gz’ saved [9160848/9160848]     
+aws_instance.bca_ec2 (remote-exec): 2025-11-06 10:10:02 (97.7 MB/s) - ‘apache-maven-3.9.11-bin.tar.gz’ saved [9160848/9160848]    
 
 aws_instance.bca_ec2 (remote-exec): apache-maven-3.9.11/README.txt
 aws_instance.bca_ec2 (remote-exec): apache-maven-3.9.11/LICENSE
@@ -351,11 +351,27 @@ aws_instance.bca_ec2 (remote-exec): Maven home: /opt/maven
 aws_instance.bca_ec2 (remote-exec): Java version: 17.0.17, vendor: Amazon.com Inc., runtime: /usr/lib/jvm/java-17-amazon-corretto.x86_64
 aws_instance.bca_ec2 (remote-exec): Default locale: en, platform encoding: UTF-8
 aws_instance.bca_ec2 (remote-exec): OS name: "linux", version: "6.1.156-177.286.amzn2023.x86_64", arch: "amd64", family: "unix"   
-aws_instance.bca_ec2 (remote-exec): 
-aws_instance.bca_ec2: Creation complete after 2m24s [id=i-0b810bf95a72a1ba7]
+aws_instance.bca_ec2 (remote-exec): M2_HOME=/opt/maven
+aws_instance.bca_ec2 (remote-exec): M2=/opt/maven/bin
+aws_instance.bca_ec2 (remote-exec): JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64
+aws_instance.bca_ec2 (remote-exec): PATH=$PATH:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2
+aws_instance.bca_ec2 (remote-exec): sudo
+aws_instance.bca_ec2 (remote-exec): : source: command not found
+aws_instance.bca_ec2 (remote-exec): # .bash_profile
+aws_instance.bca_ec2 (remote-exec): if [ -f ~/.bashrc ]; then
+aws_instance.bca_ec2 (remote-exec):     . ~/.bashrc
+aws_instance.bca_ec2 (remote-exec): fi
+
+aws_instance.bca_ec2 (remote-exec): # User specific environment and startup programs
+aws_instance.bca_ec2 (remote-exec): M2_HOME=/opt/maven
+aws_instance.bca_ec2 (remote-exec): M2=/opt/maven/bin
+aws_instance.bca_ec2 (remote-exec): JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64
+aws_instance.bca_ec2 (remote-exec): PATH=$PATH:$HOME/bin:$JAVA_HOME:$M2_HOME:$M2
+aws_instance.bca_ec2 (remote-exec): e0ca0b0bedab417bb47298c41bd86881
+aws_instance.bca_ec2: Creation complete after 2m24s [id=i-003403a5bbc888a36]
 
 Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-bca_ec2 = "54.241.138.232"
+jenkins_server_url = "http://52.53.162.134:8080"
