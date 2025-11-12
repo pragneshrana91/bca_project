@@ -35,7 +35,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 8080
   ip_protocol       = "tcp"
-  to_port           = 8080
+  to_port           = 9000
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
@@ -54,7 +54,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 
 # In Terraform, the aws_instance resource is used to create, configure, and manage an Amazon EC2 (Elastic Compute Cloud) instance directly through IaC definitions.
 # A resource block as below declares a resource of a given type "aws_instance" with a given local name "bca_ec2".
-resource "aws_instance" "bca_ec2" {
+resource "aws_instance" "jenkins_server" {
   ami                    = "ami-0e6be795b21969e1d"
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.demo_pair.key_name
@@ -107,6 +107,30 @@ resource "aws_instance" "bca_ec2" {
   }
 }
 
+resource "aws_instance" "docker_host" {
+  ami                    = "ami-0e6be795b21969e1d"
+  instance_type          = "t2.micro"
+  key_name               = aws_key_pair.demo_pair.key_name
+  vpc_security_group_ids = [aws_security_group.bca_sg.id]
+
+  user_data = <<-EOF
+    #!/bin/bash
+    yum update -y
+    yum install docker -y
+    systemctl enable docker
+    systemctl start docker
+    useradd dockeradmin
+    echo 'dockeradmin:docker@123' | chpasswd
+    usermod -aG docker dockeradmin
+
+  EOF
+
+    tags = {
+    Name = "docker_host"
+  }
+}
+
+
 output "jenkins_server_url" {
-  value = "http://${aws_instance.bca_ec2.public_ip}:8080"
+  value = "http://${aws_instance.jenkins_server.public_ip}:8080"
 }
